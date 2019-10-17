@@ -1,0 +1,102 @@
+
+
+
+Setup:
+1. Log into IBM Bluemix and create new conversation service which will create a new workspace.
+2. Create new service credentials to download and setup information.
+3. Download the usernames and passwords and into .env files
+4. Extract from workspace details workspace id and add that into the .env files.
+5. To connect to workspace hit npm start which will connect to the local files to Watson.
+
+
+Watson SDks communicate  with the conversation service etc in th IBM Cloud
+
+Conversation service is made up of intents entities and dialog.
+
+intent -> Purpose of user input i.e. #turn on, this is communicating goals. Think of what your user wants to do.
+
+The hash is needed so watson will recognise the input, you have to supply sample data to train it.
+
+Entity represents term or object which is relavant to the intent which provides specific context.
+
+this is repsresented by @ prefix i.e. @appliance
+
+Dialogs
+
+Branching conversation flow which provides responses to the users based on the entity and intent.
+
+Watson Understands: JSON response from object inside of this there is the intents array, which is what we are interested in.
+
+Go back to workspace in the cloud and add the intent and additional examples which could be seen as intents
+
+so #turn_on could have play, turn on, start etc.
+
+You can import intents
+
+Whats happening in Node:
+
+Public has a basic webpage to handle input and output.
+
+.env file: Configures the environment
+
+manifest.yml Needed to deploy this on BlueMix mostly just metadata
+
+issue commanf cf  push and name defined in manifest file
+
+app.js
+
+line 20 needed to use .env file
+line 24 watson dependencies
+
+var conversation initialise conversation with  .env file
+
+app.post sends data to the api, we need workspace to setup service
+
+Get the payload and send it to the convseraton with message function.
+
+BLUE MIX
+
+Contains system entities which allows you to turn on system entities
+such as location services to find where the user is. This can be
+found in Entites section within the BlueMix platform, these are simple toggle buttons.
+
+Fuzzy matching: System to find what you mean or something which is loosely connected.
+
+Chat icon allows watson to train before proceeding
+
+Dialog control struccture on ow a chatbot will respond.
+
+Add dialog chatbot which allows the chat bot to respond to user dialog it is names tge same as the intents
+
+Sure Let me turn the @appliance -Let the user know that it is an intent you wish to turn on.
+
+Create a new Dialog, each dialog has a node and @ to add in the intents which have been created with the appropiate response
+
+You can export intents from a different part of bluemix and download the intents as a csv file which is then downloaded
+
+Just upload them as a regular CSV file which can also be done with JSON and the dialog must be set up to  make a conversation service
+
+Discovery Service allows us to grab and deal with unstructured data.
+
+It injests raw data in pdf json etc, the natural language service will use this to find information  and turn it into a collection and  output it
+
+You can query objects within objects using Watsons platform  enriched_text.text will return all the entites with text.
+
+
+Discover Service allows the upload of and processing in the discovery service and each set is quieried indepently
+
+Query language tools allow you to use  natural language ui to find services which are of interest
+
+
+Allows you to use BlueMix natural language services entities_text.entities.language
+
+.env file plug collection and environment ids where needed
+
+
+
+
+
+
+
+
+
